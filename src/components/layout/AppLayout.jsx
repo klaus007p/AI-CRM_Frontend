@@ -36,10 +36,10 @@ export function AppLayout() {
 
       {/* Main column */}
       <div className="flex flex-1 flex-col overflow-hidden">
-        <div className="px-4 pt-4 md:px-6 md:pt-5">
+        <div className="px-3 pt-3 sm:px-4 sm:pt-4 md:px-6 md:pt-5">
           <TopNav onMenuClick={() => setMobileOpen(true)} />
         </div>
-        <main className="flex-1 overflow-y-auto px-4 py-6 md:px-6">
+        <main className="flex-1 overflow-y-auto px-3 py-4 sm:px-4 sm:py-6 md:px-6">
           <div className="mx-auto max-w-7xl">
             <Outlet />
           </div>

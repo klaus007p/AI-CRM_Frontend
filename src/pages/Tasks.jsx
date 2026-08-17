@@ -1,8 +1,3 @@
-/**
- * Tasks / Follow-ups page — premium upgrade
- * Grouped timeline view (Overdue → Due Today → Upcoming → No date → Completed),
- * completion progress bar, priority accent bars, and full CRUD.
- */
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -51,14 +46,13 @@ import {
 } from "../lib/constants";
 import { cn } from "../lib/utils";
 
-// ─── Priority accent bar colours ──────────────────────────────────────────────
+
 const PRIORITY_BAR = {
   High: "bg-rose-400",
   Medium: "bg-amber-400",
   Low: "bg-slate-300",
 };
 
-// ─── Group definitions (in display order) ────────────────────────────────────
 const GROUPS = [
   { key: "overdue",   label: "Overdue",      labelClass: "text-rose-700",   countClass: "bg-rose-50 text-rose-700" },
   { key: "today",     label: "Due today",    labelClass: "text-amber-700",  countClass: "bg-amber-50 text-amber-700" },
@@ -67,7 +61,7 @@ const GROUPS = [
   { key: "completed", label: "Completed",    labelClass: "text-brand-700",  countClass: "bg-brand-50 text-brand-700" },
 ];
 
-// ─── Tab definitions ──────────────────────────────────────────────────────────
+
 const STATUS_TABS = [
   { value: "all",         label: "All" },
   { value: "Pending",     label: "Pending" },
@@ -75,14 +69,13 @@ const STATUS_TABS = [
   { value: "Completed",   label: "Completed" },
 ];
 
-// ─── Helper: is a task overdue (has past dueDate, not completed)? ─────────────
+
 function isOverdue(task) {
   if (!task.dueDate || task.status === "Completed") return false;
   const d = new Date(task.dueDate);
   return isPast(d) && !isToday(d);
 }
 
-// ─── Helper: assign a task to a group key ────────────────────────────────────
 function groupKey(task) {
   if (task.status === "Completed") return "completed";
   if (!task.dueDate) return "nodate";
@@ -92,7 +85,7 @@ function groupKey(task) {
   return "upcoming";
 }
 
-// ─── Add / Edit dialog (declared at module level — no component-in-component) ─
+// Add / Edit dialog (declared at module level ) 
 function TaskFormDialog({ open, onClose, task, leads, onSaved }) {
   const isEdit = Boolean(task);
 
@@ -218,7 +211,7 @@ function TaskFormDialog({ open, onClose, task, leads, onSaved }) {
   );
 }
 
-// ─── Single task row (module-level component) ─────────────────────────────────
+
 function TaskRow({ task, onToggle, onEdit, onDelete }) {
   const done    = task.status === "Completed";
   const inProg  = task.status === "In Progress";
@@ -339,7 +332,7 @@ function TaskRow({ task, onToggle, onEdit, onDelete }) {
   );
 }
 
-// ─── Group section header (module-level) ──────────────────────────────────────
+
 function GroupHeader({ label, count, labelClass, countClass }) {
   return (
     <div className="flex items-center gap-2 border-b border-line bg-surface-muted/30 px-5 py-2">
@@ -353,7 +346,6 @@ function GroupHeader({ label, count, labelClass, countClass }) {
   );
 }
 
-// ─── Completion progress bar card (module-level) ──────────────────────────────
 function ProgressCard({ completed, total }) {
   const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
   return (
@@ -376,7 +368,7 @@ function ProgressCard({ completed, total }) {
   );
 }
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+
 export default function Tasks() {
   // Raw data
   const [tasks, setTasks] = useState(null);
@@ -389,7 +381,7 @@ export default function Tasks() {
   const [toDelete, setToDelete] = useState(null);
   const [deleting, setDeleting] = useState(false);
 
-  // ── Data loading ─────────────────────────────────────────────────────────
+  
   const load = () => {
     setTasks(null);
     tasksApi.list().then((res) => setTasks(res.tasks)).catch(() => setTasks([]));
@@ -400,7 +392,7 @@ export default function Tasks() {
     leadsApi.list().then((res) => setLeads(res.leads)).catch(() => {});
   }, []);
 
-  // ── KPI counts ───────────────────────────────────────────────────────────
+  
   const stats = useMemo(() => {
     if (!tasks) return { total: 0, pending: 0, overdue: 0, completed: 0 };
     return {
@@ -411,14 +403,13 @@ export default function Tasks() {
     };
   }, [tasks]);
 
-  // ── Tab-filtered list ─────────────────────────────────────────────────────
   const filtered = useMemo(() => {
     if (!tasks) return [];
     if (tab === "all") return tasks;
     return tasks.filter((t) => t.status === tab);
   }, [tasks, tab]);
 
-  // ── Group the filtered tasks into timeline buckets ────────────────────────
+
   const groupedSections = useMemo(() => {
     // Build a map: groupKey → [tasks]
     const map = {};
@@ -434,7 +425,6 @@ export default function Tasks() {
     }));
   }, [filtered]);
 
-  // ── Actions ───────────────────────────────────────────────────────────────
   const openNew = () => {
     setEditing(null);
     setFormOpen(true);
@@ -470,7 +460,6 @@ export default function Tasks() {
     }
   };
 
-  // ─────────────────────────────────────────────────────────────────────────
   return (
     <div className="space-y-6">
       {/* Page header */}

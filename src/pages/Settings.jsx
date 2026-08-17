@@ -45,7 +45,7 @@ function SectionIcon({ icon: Icon, className }) {
   );
 }
 
-/* ── 1. Profile form ────────────────────────────────────────────── */
+
 function ProfileCard({ user, updateUser }) {
   const {
     register,
@@ -152,7 +152,7 @@ function ProfileCard({ user, updateUser }) {
   );
 }
 
-/* ── 2. Security / change-password form ────────────────────────── */
+/* ── 2. Security / change-password form */
 function SecurityCard() {
   const {
     register,
@@ -234,7 +234,7 @@ function SecurityCard() {
   );
 }
 
-/* ── 3. AI Integration status card ─────────────────────────────── */
+/* ── 3. AI Integration status card */
 function AiIntegrationCard() {
   const [status, setStatus] = useState(null); // null = loading
 
@@ -322,7 +322,7 @@ function AiIntegrationCard() {
   );
 }
 
-/* ── 4. Account info + logout ───────────────────────────────────── */
+/* ── 4. Account info + logout */
 function AccountCard({ user, logout }) {
   return (
     <Card>
@@ -369,7 +369,7 @@ function AccountCard({ user, logout }) {
   );
 }
 
-/* ── Page root ──────────────────────────────────────────────────── */
+/* ── Page root */
 export default function Settings() {
   const { user, updateUser, logout } = useAuth();
 

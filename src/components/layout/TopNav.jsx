@@ -47,7 +47,7 @@ export function TopNav({ onMenuClick }) {
       </button>
 
       {/* Centered nav pill */}
-      <nav className="mx-auto hidden items-center gap-1 rounded-full bg-surface p-1.5 shadow-[var(--shadow-soft)] lg:flex">
+      <nav className="mx-auto hidden items-center gap-1 rounded-full bg-surface p-1.5 shadow-(--shadow-soft) lg:flex">
         {LINKS.map(({ to, label, end }) => (
           <NavLink
             key={to}

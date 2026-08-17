@@ -73,14 +73,14 @@ export default function Dashboard() {
   const rangeLabel = `${format(start, "dd MMM")} – ${format(today, "dd MMM, yyyy")}`;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Title row */}
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <h1 className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-[2.5rem]">
-          Welcome Back, <span className="text-ink-soft">{user?.name?.split(" ")[0]}</span>
+      <div className="flex flex-col gap-3 md:gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <h1 className="text-2xl font-extrabold tracking-tight text-ink sm:text-[2rem] md:text-3xl lg:text-[2.5rem] leading-tight">
+          Welcome Back, <span className="text-ink-soft block sm:inline">{user?.name?.split(" ")[0]}</span>
         </h1>
         <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-2 rounded-full bg-surface px-4 py-2.5 text-sm font-medium text-ink-soft shadow-[var(--shadow-soft)] sm:flex">
+          <div className="hidden items-center gap-2 rounded-full bg-surface px-4 py-2.5 text-sm font-medium text-ink-soft shadow-(--shadow-soft) sm:flex">
             <CalendarRange className="h-4 w-4" />
             {rangeLabel}
           </div>
@@ -95,9 +95,9 @@ export default function Dashboard() {
 
       {/* Balanced 3-column composition — cards distributed so the columns end
           at roughly the same height, leaving no large vertical gaps. */}
-      <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-12">
+      <div className="grid grid-cols-1 items-start gap-4 md:gap-5 md:grid-cols-2 lg:grid-cols-12">
         {/* ── Left column ───────────────────────────────── */}
-        <div className="space-y-5 lg:col-span-3">
+        <div className="space-y-4 md:space-y-5 md:col-span-1 lg:col-span-3">
           <HeroCard value={stats.pipelineValue} />
 
           <Card className="p-5">
@@ -134,7 +134,7 @@ export default function Dashboard() {
         </div>
 
         {/* ── Center column ─────────────────────────────── */}
-        <div className="space-y-5 lg:col-span-6">
+        <div className="space-y-4 md:space-y-5 md:col-span-2 lg:col-span-6">
           <Card className="p-6">
             <SectionHeading
               icon={CreditCard}
@@ -171,7 +171,7 @@ export default function Dashboard() {
         </div>
 
         {/* ── Right column ──────────────────────────────── */}
-        <div className="space-y-5 lg:col-span-3">
+        <div className="space-y-4 md:space-y-5 md:col-span-2 lg:col-span-3">
           {/* Revenue / balance card */}
           <Card className="p-6">
             <SectionHeading title="Revenue Goal" subtitle="Closed-won total" to="/pipeline" />
@@ -485,7 +485,7 @@ function BalanceChart({ trend }) {
 function ChartTooltip({ active, payload, label, prefix = "", unit = "" }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl border border-line bg-surface px-3 py-2 shadow-[var(--shadow-pop)]">
+    <div className="rounded-xl border border-line bg-surface px-3 py-2 shadow-(--shadow-pop)">
       <p className="text-xs font-medium text-ink-soft">{label}</p>
       <p className="text-sm font-semibold text-ink">
         {prefix}

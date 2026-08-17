@@ -277,8 +277,8 @@ function LeadCard({ lead, dragHandle, overlay }) {
   return (
     <div
       className={cn(
-        "group rounded-2xl bg-surface p-3.5 shadow-[var(--shadow-soft)] transition border border-line/60",
-        overlay ? "shadow-[var(--shadow-pop)] rotate-2" : "hover:shadow-[var(--shadow-card)]"
+        "group rounded-2xl bg-surface p-3.5 shadow-(--shadow-soft) transition border border-line/60",
+        overlay ? "shadow-(--shadow-pop) rotate-2" : "hover:shadow-(--shadow-card)"
       )}
     >
       {/* Name / company row + drag handle */}

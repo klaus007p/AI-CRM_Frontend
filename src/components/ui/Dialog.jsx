@@ -31,7 +31,7 @@ export function Dialog({ open, onClose, title, description, children, className 
         role="dialog"
         aria-modal="true"
         className={cn(
-          "relative z-10 w-full max-w-lg bg-surface rounded-3xl shadow-[var(--shadow-pop)] animate-fade-up max-h-[90vh] overflow-y-auto no-scrollbar",
+          "relative z-10 w-full max-w-lg bg-surface rounded-3xl shadow-(--shadow-pop) animate-fade-up max-h-[90vh] overflow-y-auto no-scrollbar",
           className
         )}
       >
@@ -81,7 +81,7 @@ export function Drawer({ open, onClose, title, children, className }) {
       <div className="absolute inset-0 bg-ink/40 backdrop-blur-sm" onClick={onClose} />
       <div
         className={cn(
-          "absolute right-0 top-0 h-full w-full max-w-md bg-canvas shadow-[var(--shadow-pop)] overflow-y-auto no-scrollbar",
+          "absolute right-0 top-0 h-full w-full max-w-md bg-canvas shadow-(--shadow-pop) overflow-y-auto no-scrollbar",
           "animate-[slidein_.3s_cubic-bezier(.16,1,.3,1)]",
           className
         )}

@@ -474,7 +474,7 @@ export default function Leads() {
 
       {/* Floating bulk action bar */}
       {selected.size > 0 && (
-        <div className="fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-line bg-surface px-3 py-2 shadow-[var(--shadow-pop)] animate-fade-up">
+        <div className="fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full border border-line bg-surface px-3 py-2 shadow-(--shadow-pop) animate-fade-up">
           <span className="pl-2 text-sm font-medium text-ink">
             {selected.size} selected
           </span>
@@ -557,7 +557,7 @@ function LeadGridCard({ lead, selected, onToggle, onOpen, onEdit, onDelete }) {
     <div
       onClick={onOpen}
       className={cn(
-        "group relative cursor-pointer rounded-2xl border bg-surface p-5 shadow-[var(--shadow-card)] transition hover:shadow-[var(--shadow-pop)]",
+        "group relative cursor-pointer rounded-2xl border bg-surface p-5 shadow-(--shadow-card) transition hover:shadow-(--shadow-pop)",
         selected ? "border-brand-400 ring-2 ring-brand-500/30" : "border-line"
       )}
     >

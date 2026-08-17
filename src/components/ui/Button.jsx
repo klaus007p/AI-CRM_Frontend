@@ -4,7 +4,7 @@ import { cn } from "../../lib/utils";
 
 /* Button variants — the workhorse of the UI. */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] select-none",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] select-none touch-manipulation",
   {
     variants: {
       variant: {
@@ -19,11 +19,11 @@ const buttonVariants = cva(
         subtle: "bg-brand-50 text-brand-700 hover:bg-brand-100",
       },
       size: {
-        sm: "h-9 px-3.5",
-        md: "h-10 px-5",
-        lg: "h-12 px-6 text-[15px]",
-        icon: "h-10 w-10 p-0",
-        "icon-sm": "h-9 w-9 p-0",
+        sm: "h-9 px-3.5 min-h-[44px] sm:h-9 sm:min-h-auto",
+        md: "h-10 px-5 min-h-[44px] sm:h-10 sm:min-h-auto",
+        lg: "h-12 px-6 text-[15px] min-h-[44px] sm:h-12 sm:min-h-auto",
+        icon: "h-10 w-10 p-0 min-h-[44px] min-w-[44px] sm:h-10 sm:w-10 sm:min-h-auto sm:min-w-auto",
+        "icon-sm": "h-9 w-9 p-0 min-h-[44px] min-w-[44px] sm:h-9 sm:w-9 sm:min-h-auto sm:min-w-auto",
       },
     },
     defaultVariants: { variant: "primary", size: "md" },
