@@ -524,7 +524,7 @@ export default function Leads() {
   );
 }
 
-/* ── Table / grid view toggle ───────────────────────────────────────── */
+/* ── Table / grid view toggle */
 function ViewToggle({ view, onChange }) {
   const options = [
     { value: "table", icon: Table2, label: "Table view" },
@@ -550,7 +550,7 @@ function ViewToggle({ view, onChange }) {
   );
 }
 
-/* ── Card used in the grid view ─────────────────────────────────────── */
+/* ── Card used in the grid view */
 function LeadGridCard({ lead, selected, onToggle, onOpen, onEdit, onDelete }) {
   const stage = STAGE_STYLES[lead.status] || STAGE_STYLES.New;
   return (

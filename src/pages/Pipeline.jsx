@@ -105,7 +105,7 @@ export default function Pipeline() {
     });
   };
 
-  /* ── KPI computations ─────────────────────────────────────────────── */
+  /* ── KPI computations */
   const allLeads = Object.values(board).flat();
   const totalValue = allLeads.reduce((s, l) => s + (l.value || 0), 0);
   const openDeals = allLeads.filter((l) => l.status !== "Won" && l.status !== "Lost");
@@ -171,7 +171,7 @@ export default function Pipeline() {
   );
 }
 
-/* ── KPI stat tile (matches Leads page pattern) ─────────────────────── */
+/* ── KPI stat tile (matches Leads page pattern)  */
 function StatTile({ icon: Icon, label, value, tint }) {
   return (
     <Card className="p-4">
@@ -188,7 +188,7 @@ function StatTile({ icon: Icon, label, value, tint }) {
   );
 }
 
-/* ── Column ─────────────────────────────────────────────────────────── */
+/* ── Column*/
 function Column({ stage, leads }) {
   const { setNodeRef, isOver } = useDroppable({ id: stage });
   const style = STAGE_STYLES[stage];
@@ -237,7 +237,7 @@ function Column({ stage, leads }) {
   );
 }
 
-/* ── Sortable card wrapper ──────────────────────────────────────────── */
+/* ── Sortable card wrapper  */
 function SortableCard({ lead }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: lead._id });
@@ -253,7 +253,7 @@ function SortableCard({ lead }) {
   );
 }
 
-/* ── Card UI ────────────────────────────────────────────────────────── */
+/* ── Card UI */
 function LeadCard({ lead, dragHandle, overlay }) {
   const [suggesting, setSuggesting] = useState(false);
 

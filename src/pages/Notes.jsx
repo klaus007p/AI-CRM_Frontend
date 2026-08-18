@@ -33,7 +33,7 @@ import { notesApi, leadsApi } from "../lib/services";
 import { relative } from "../lib/format";
 import { cn } from "../lib/utils";
 
-// ── StatTile (copied from Leads premium pattern) ───────────────────────────────
+// ── StatTile (copied from Leads premium pattern) 
 function StatTile({ icon: Icon, label, value, tint }) {
   return (
     <Card className="p-4">
@@ -50,7 +50,7 @@ function StatTile({ icon: Icon, label, value, tint }) {
   );
 }
 
-// ── FilterChip (same shape as Leads' StageChip) ────────────────────────────────
+// ── FilterChip (same shape as Leads' StageChip) 
 function FilterChip({ label, count, active, onClick }) {
   return (
     <button
@@ -75,7 +75,7 @@ function FilterChip({ label, count, active, onClick }) {
   );
 }
 
-// ── NoteCard ───────────────────────────────────────────────────────────────────
+// ── NoteCard 
 function NoteCard({ note, onEdit, onDelete, onTogglePin }) {
   // Prefer lead over contact for the linked-entity chip
   const entity = note.lead ?? note.contact ?? null;
@@ -153,7 +153,7 @@ function NoteCard({ note, onEdit, onDelete, onTogglePin }) {
   );
 }
 
-// ── NoteFormDialog ─────────────────────────────────────────────────────────────
+// ── NoteFormDialog 
 function NoteFormDialog({ open, onClose, note, leads, onSaved }) {
   const isEditing = Boolean(note);
 
@@ -256,13 +256,13 @@ function NoteFormDialog({ open, onClose, note, leads, onSaved }) {
   );
 }
 
-// ── Page ───────────────────────────────────────────────────────────────────────
+// ── Page 
 export default function Notes() {
-  // ── Data ─────────────────────────────────────────────────────────────────
+  // ── Data
   const [notes, setNotes] = useState(null);  // null = loading
   const [leads, setLeads] = useState([]);    // lead picker options
 
-  // ── UI state ──────────────────────────────────────────────────────────────
+  // ── UI state 
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all"); // "all" | "pinned" | "linked" | "unlinked"
   const [formOpen, setFormOpen] = useState(false);
@@ -270,7 +270,7 @@ export default function Notes() {
   const [toDelete, setToDelete] = useState(null);
   const [deleting, setDeleting] = useState(false);
 
-  // ── Fetch ─────────────────────────────────────────────────────────────────
+  // ── Fetch 
   const load = () => {
     setNotes(null);
     notesApi.list().then((res) => setNotes(res.notes)).catch(() => setNotes([]));
@@ -281,7 +281,7 @@ export default function Notes() {
     leadsApi.list().then((res) => setLeads(res.leads ?? [])).catch(() => {});
   }, []);
 
-  // ── KPI counts (stable — independent of active filter) ───────────────────
+  // ── KPI counts (stable — independent of active filter) 
   const kpis = useMemo(() => {
     const list = notes || [];
     return {
@@ -292,7 +292,7 @@ export default function Notes() {
     };
   }, [notes]);
 
-  // ── Quick-filter chip counts ──────────────────────────────────────────────
+  // ── Quick-filter chip counts 
   const chipCounts = useMemo(() => ({
     all: kpis.total,
     pinned: kpis.pinned,
@@ -300,7 +300,7 @@ export default function Notes() {
     unlinked: kpis.unlinked,
   }), [kpis]);
 
-  // ── Client-side filtering (search + quick-filter chip) ───────────────────
+  // ── Client-side filtering (search + quick-filter chip)
   const filtered = useMemo(() => {
     if (!notes) return [];
     let list = notes;
@@ -321,7 +321,7 @@ export default function Notes() {
 
   const isActive = search.trim() || filter !== "all";
 
-  // ── Handlers ──────────────────────────────────────────────────────────────
+  // ── Handlers 
   const openNew = () => { setEditing(null); setFormOpen(true); };
   const openEdit = (note) => { setEditing(note); setFormOpen(true); };
   const handleSaved = () => { setFormOpen(false); load(); };
@@ -352,7 +352,7 @@ export default function Notes() {
 
   const clearAll = () => { setSearch(""); setFilter("all"); };
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // ── Render 
   return (
     <div className="space-y-6">
       {/* Page header */}
